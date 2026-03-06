@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MKA Dream Home Property/Investments - Your Future Awaits</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body class="theme-blue"> <!-- Initial theme, will be overridden by JS if stored -->
+    <header>
+        <div class="container">
+            <h1 class="logo"> WELCOME TO<span> MKA DREAM HOME PROPERTY</span></h1>
+
+            <nav id="main-nav" aria-label="Primary navigation" >
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li> <!-- Dark Mode Toggle Button -->
+                <button id="darkModeToggle" class="btn dark-mode-toggle-btn" aria-label="Toggle dark mode">Light Mode</button></li>
+                </ul>
+            </nav>
+
+            <div style="display:flex; align-items:center; gap: .75rem;">
+                <div class="theme-switcher" aria-hidden="false" title="Switch theme (saved locally)">
+                    <div class="theme-pill blue" data-theme="theme-blue" aria-label="Modern Blue"></div>
+                    <div class="theme-pill gold" data-theme="theme-gold" aria-label="Royal Gold"></div>
+                    <div class="theme-pill green" data-theme="theme-green" aria-label="Emerald Green"></div>
+                </div>
+
+               
+
+                <div class="menu-toggle bg-primary" id="mobile-menu" aria-label="Toggle navigation" role="button" tabindex="0">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="fadeInUp">
+            <div class="container text-center">
+                <h1>Find Your Perfect Plot of Land</h1>
+                <b><p class="find">Explore prime land investments for residential, commercial, and agricultural needs curated for long-term value and peace of mind,With luxury duplexes for both (Rents,Sales and Apartments) </p></b>
+                <a href="#properties" class="btn" id="inherit">View Our Listings</a>
+            </div>
+        </section>
+
+        <section id="about" class="fadeInUp">
+            <div class="container text-center">
+                <h2>About MKA DREAM HOME PROPERTY</h2><b><strong>
+                <p>At MKA Dream Home Property, we turn your real estate dreams into reality. We connect buyers with premium land and property opportunities across residential, commercial, and agricultural sectors which are all based in Lagos, Nigeria.</p>
+                <p>From first discovery to final acquisition, our dedicated team provides transparent guidance, local insights, and hands on support, ensuring every investment whether for a dream home, development project, or long term growth. Explore the possibilities with us and unlock the true value of your property journey. Learn More →.</p></b></strong>
+            </div>
+        </section>
+
+        <section id="properties" class="fadeInUp">
+            <div class="container text-center">
+                <h2>Our Exclusive Land Listings</h2>
+                <b><p class="muted">Discover a range of prime plots available for immediate purchase, click a listing to learn more.</p></b>
+
+                <div class="property-grid mt-1">
+                    <!-- Card 1 -->
+                    <div class="property-card">
+                        <img src="profile.JPG" alt="Apex Gardens Estate">
+                        <div class="property-card-content">
+                            <h3>APEX GARDENS Estate</h3>
+                            <p>Apex Gardens is an estate where</p>
+                            <p class="location">Location: Apa Aledo ososa ijebu ode, off itokin ikorodu road, Ogun state</p>
+                            <span class="price">₦25,000,000</span>
+                            <div class="card-actions">
+                                <a href="Learn More1.html" class="btn btn-secondary">Learn More</a>
+                                <a href="tel:+2348054696078" class="btn btn-transparent">Call</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="property-card">
+                        <img src="profile2.JPG" alt="Commercial Hub Parcel">
+                        <div class="property-card-content">
+                            <h3>Commercial Hub Parcel</h3>
+                            <p>Strategically located for high commercial potential — great for shops, offices, or mixed-use.</p>
+                            <p class="location">Location: Victoria Island, Lagos</p>
+                            <span class="price">₦80,000,000</span>
+                            <div class="card-actions">
+                                <a  href="Learn More1.html" class="btn btn-secondary">Learn More</a>
+                                <a href="mailto:mkadproperties2019@gmail.com" class="btn btn-transparent">Email</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="property-card">
+                        <img src="profile3.JPG" alt="Agricultural Land">
+                        <div class="property-card-content">
+                            <h3>Spacious Agricultural Land</h3>
+                            <p>Ideal for farming or large scale agri business with fertile soil and water access nearby.</p>
+                            <p class="location">Location: Ibadan, Oyo State</p>
+                            <span class="price">₦15,000,000</span>
+                            <div class="card-actions">
+                                <a  href="Learn More1.html" class="btn btn-secondary">Learn More</a>
+                                <a href="#" class="btn btn-transparent">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="property-card">
+                        <video width="100%" height="100%" controls muted> <!-- Added muted for autoplay compatibility -->
+                            <source src="profile4.MP4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="property-card-content">
+                            <h3>Suburban Residential Plot</h3>
+                            <p>Quiet, family friendly neighborhood, utilities and good schools nearby.</p>
+                            <p class="location">Location: Egan, Igando</p>
+                            <span class="price">₦30,000,000</span>
+                            <div class="card-actions">
+                                <a  href="Learn More1.html" class="btn btn-secondary">Learn More</a>
+                                <a href="#" class="btn btn-transparent">Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="property-card">
+                        <img src="profile5.JPG" alt="Agricultural Land">
+                        <div class="property-card-content">
+                            <h3>Spacious Agricultural Land</h3>
+                            <p>Ideal for farming or large scale agri business with fertile soil and water access nearby.</p>
+                            <p class="location">Location: Ibadan, Oyo State</p>
+                            <span class="price">₦15,000,000</span>
+                            <div class="card-actions">
+                                <a  href="Learn More1.html" class="btn btn-secondary">Learn More</a>
+                                <a href="#" class="btn btn-transparent">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="property-card">
+                        <img src="profile6.JPG" alt="Oceans Breeze Estate">
+                        <div class="property-card-content">
+                            <h3>Oceans Breeze Estate</h3>
+                            <p>Peaceful coastal living awaits you.</p>
+                            <p class="location">Location: Ibadan, Oyo State</p>
+                            <span class="price">₦4,500,000</span>
+                            <div class="card-actions">
+                                <a  href="Learn More1.html" class="btn btn-secondary">Learn More</a>
+                                <a href="#" class="btn btn-transparent">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="fadeInUp">
+            <div class="container text-center">
+                <h2>Get In Touch With Us</h2>
+                <div class="contact-content mt-1">
+                    <div class="contact-info">
+                        <b><p>Have a question or ready to secure your next investment? We're just a message away. Whether you're buying, investing, or simply exploring your options, our team is here to guide you with clarity, speed, and care.</p></b>
+                        <b><p>Reach out today let's find the perfect property for your future.</p></b>
+                        <p><strong>Phone:</strong> <a href="tel:+2348054696078">+234 805 469 6078</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:mkadproperties2019@gmail.com">mkadproperties2019@gmail.com</a></p>
+                        <p><strong>Office Address:</strong> Bogije, Ibeju Lekki, Lagos, Nigeria.</p>
+                        <p><strong>Business Hours:</strong> Mon-Sat: 9am-6pm</p>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form" id="contactForm"> <!-- Changed onsubmit to id for JS -->
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Full Name" required>
+
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="Email address" required>
+
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" placeholder="Share your thought for us on what you looking for...." required></textarea>
+
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> MKA Dream Home Property/Investments. All Rights Reserved.</p>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#properties">Listings</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook" /></a>
+                <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png" alt="Twitter" /></a>
+                <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new--v1.png" alt="Instagram" /></a>
+                <a href="#" aria-label="LinkedIn"><img src="https://img.icons8.com/ios-filled/24/ffffff/linkedin.png" alt="LinkedIn" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="app.js"></script>
+</body>
+</html>
