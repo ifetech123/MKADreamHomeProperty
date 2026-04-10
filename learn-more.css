@@ -1,310 +1,185 @@
-/* ===============================
-   LEARN MORE PAGE (CHILD STYLES)
-   Inherits from style.css, parent cell
-================================ */
 
+/* ============================================================
+   17. LEARN MORE PAGE STYLES
+   ============================================================ */
 
-/* Hero */
 .property-hero {
   background:
     linear-gradient(var(--hero-overlay), var(--hero-overlay)),
     url('profile.JPG') center/cover no-repeat;
   color: #fff;
-  padding: 5rem 0;
-  text-align: center; /* Centered content for hero */
+  padding: 5.5rem 0;
+  text-align: center;
 }
-.cash {
-  color: red;
-}
-
-.pay{
-  color: inherit; /* Keeps link color consistent with parent element, usually #fff here */
-}
-
-.property-hero h1 {
-  font-size: 2.6rem;
-  color: #fff; /* Ensure heading color is white in hero */
-}
-
-.property-hero .location {
-  color: #e5e7eb;
-  margin-bottom: .6rem;
-}
-
-.property-hero .price {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-}
+.property-hero h1        { font-size: 2.8rem; color: #fff; margin-bottom: .5rem; }
+.property-hero .location { color: #e5e7eb; margin-bottom: .7rem; font-size: 1.05rem; }
+.property-hero .price    { font-size: 1.8rem; font-weight: 700; color: var(--secondary-color); }
 
 .hero-actions {
-  margin-top: 1.6rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center; /* Center buttons in hero */
+  margin-top: 1.8rem;
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  justify-content: center;
 }
+.hero-actions .btn { color: #fff; }
 
 /* Gallery */
 .gallery-grid {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
-  padding-bottom: .5rem;
-  justify-content: center; /* Center images/videos if there's space */
-  align-items: center; /* vertically align */
+  padding-bottom: .6rem;
+  justify-content: center;
+  align-items: center;
 }
+.gallery-grid::-webkit-scrollbar       { height: 5px; }
+.gallery-grid::-webkit-scrollbar-track { background: var(--border-color); border-radius: 4px; }
+.gallery-grid::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
 
 .gallery-grid img,
 .gallery-grid video {
-  width: 180px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-  box-shadow: var(--shadow-light);
-  cursor: pointer; /* Indicate clickable for lightbox */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 185px; height: 125px;
+  object-fit: cover; border-radius: 10px;
+  flex-shrink: 0; box-shadow: var(--shadow-light);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
-
-
 .gallery-grid img:hover,
-.gallery-grid video:hover {
-  transform: scale(1.03);
-  box-shadow: var(--shadow-medium);
-}
+.gallery-grid video:hover { transform: scale(1.05); box-shadow: var(--shadow-medium); }
 
 /* Details */
-.light-bg {
-    background: var(--light-color); /* Use general light background var */
-}
 .details-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem; margin-top: 1.2rem;
 }
-
 .detail-card {
   background: var(--card-bg);
-  padding: 1.1rem;
-  border-radius: 12px;
+  padding: 1.15rem 1.3rem; border-radius: 12px;
   box-shadow: var(--shadow-light);
-  font-weight: 600;
-  color: var(--text-color); /* Ensure detail card text uses theme text color */
+  font-weight: 600; font-size: 1.02rem;
+  color: var(--text-color);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
+.detail-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-medium); }
+.detail-card a     { color: inherit; }
 
 /* Benefits */
-.benefits {
-  max-width: 640px;
-  margin: 1rem auto 0;
-  list-style: none;
-  color: var(--text-color); /* Ensure benefits text uses theme text color */
-}
-
+.benefits { max-width: 640px; margin: 1.2rem auto 0; list-style: none; color: var(--text-color); }
 .benefits li {
-  padding: .65rem 0;
-  font-weight: 600;
-  position: relative;
-  padding-left: 1.4rem;
+  padding: .7rem 0; font-weight: 600; font-size: 1.05rem;
+  position: relative; padding-left: 1.8rem;
+  border-bottom: 1px solid var(--border-color);
 }
+.benefits li:last-child { border-bottom: none; }
+.benefits li::before    { content: "✔"; position: absolute; left: 0; color: var(--secondary-color); }
 
-.benefits li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: var(--secondary-color);
-}
-
-/* CTA */
-.cta {
-  background: var(--dark-color);
-  color: #fff;
-  padding: 4rem 0;
-}
-
+/* Status Badge */
 .status-badge {
-  display: inline-block;
-  padding: .4rem .9rem;
-  border-radius: 20px;
-  font-weight: 700;
-  margin-top: .6rem;
-  background: var(--primary-color); /* Default badge background */
-  color: #fff;
-  backdrop-filter: blur(68px); /* Keep if you like the effect */
+  display: inline-block; padding: .4rem 1rem;
+  border-radius: 20px; font-weight: 700;
+  font-size: .9rem; margin-top: .7rem; color: #fff;
 }
-
-.status-badge.available {
-  background: var(--primary-color);
-  color: #fff;
-}
-
-.status-badge.sold {
-   background: var(--danger-color); /* Uses the danger color from :root */
-  color: #fff;
-}
+.status-badge.available { background: var(--secondary-color); }
+.status-badge.sold      { background: var(--danger-color); }
 
 /* Lightbox */
 .lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.85);
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.9);
   display: none;
-  align-items: center;
-  justify-content: center;
+  align-items: center; justify-content: center;
   z-index: 2000;
-  cursor: zoom-out; /* Indicate click to close */
 }
+.lightbox img,
+.lightbox video { max-width: 92%; max-height: 88%; border-radius: 12px; object-fit: contain; }
 
-.lightbox img, .lightbox video { /* Added video support to lightbox */
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  object-fit: contain; /* Ensure full image/video is visible */
+/* FIX: was .lightbox .close — selector never matched HTML class .close-lightbox */
+.close-lightbox {
+  position: absolute; top: 22px; right: 32px;
+  font-size: 2.4rem; color: #fff;
+  cursor: pointer; z-index: 2001;
+  opacity: .8; line-height: 1;
+  transition: opacity .2s ease, transform .2s ease;
 }
+.close-lightbox:hover { opacity: 1; transform: scale(1.18); }
 
-.lightbox .close {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 2001; /* Ensure close button is above image */
-}
-
-/* Modal */
+/* Payment Modal */
 .modal {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: rgba(0,0,0,.6);
   display: none;
-  align-items: center;
-  justify-content: center;
+  align-items: center; justify-content: center;
   z-index: 1500;
 }
-
 .modal-content {
-   background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 14px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: var(--shadow-medium);
-  color: var(--text-color); /* Ensure modal content has theme text color */
+  background: var(--card-bg); padding: 2.2rem;
+  border-radius: 14px; max-width: 400px; width: 90%;
+  box-shadow: var(--shadow-medium); color: var(--text-color);
+  position: relative;
 }
-.modal-content h2 { color: var(--heading-color); }
-.modal-content ul { list-style: inside; margin-left: 1em; }
-.modal-content li { margin-bottom: .5em; }
+.modal-content h2        { color: var(--heading-color); margin-bottom: 1.2rem; font-size: 1.5rem; }
+.modal-content ul        { list-style: none; }
+.modal-content li        { padding: .7rem 0; border-bottom: 1px solid var(--border-color); font-weight: 600; font-size: 1.05rem; }
+.modal-content li:last-child { border-bottom: none; }
 
 .close-modal {
-  float: right;
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--muted); /* Use muted color for close icon */
+  position: absolute; top: 1rem; right: 1.2rem;
+  cursor: pointer; font-size: 1.6rem; color: var(--muted);
+  transition: color .2s ease;
 }
 .close-modal:hover { color: var(--primary-color); }
 
+/* CTA */
+.cta      { background: var(--dark-color); color: #fff; padding: 4.5rem 0; }
+.cta h1   { color: #fff; font-size: 2.4rem; margin-bottom: .8rem; }
+.cta p    { color: #e8eef7; font-size: 1.1rem; margin-bottom: 1.6rem; }
+.cta .btn { color: #fff; }
 
-/* WhatsApp Float Button */
+/* WhatsApp Float */
 .whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--primary-color);
-  color: #fff;
-  font-size: .9rem;
-  padding: .6rem 1rem;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  gap: .4rem;
-  box-shadow: var(--shadow-medium);
+  position: fixed; bottom: 24px; right: 24px;
+  background: #25d366; color: #fff;
+  font-size: .95rem; font-weight: 600;
+  padding: .7rem 1.2rem; border-radius: 30px;
+  display: flex; align-items: center; gap: .5rem;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
   z-index: 1200;
   transition: transform .2s ease, background .2s ease;
 }
-.whatsapp-float:hover {
-    transform: translateY(-2px);
-    background: #28a745; /* Slightly darker green on hover */
-    color: white;
-}
-.whatsapp-float::before { /* Add a simple WhatsApp icon if desired */
-    content: " ";
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.46 0-9.92 4.46-9.92 9.92 0 1.75.54 3.42 1.48 4.86l-1.57 5.75 5.92-1.55c1.37.76 2.92 1.18 4.09 1.18 5.46 0 9.92-4.46 9.92-9.92s-4.46-9.92-9.92-9.92zm0 18c-1.39 0-2.82-.41-4.04-1.07l-.29-.17-3.03.79.8-2.94-.19-.3c-.93-1.46-1.43-3.14-1.43-4.88 0-4.43 3.61-8.04 8.04-8.04s8.04 3.61 8.04 8.04-3.61 8.04-8.04 8.04zm4.45-5.32c-.17-.08-.98-.49-1.14-.55s-.27-.08-.38.08c-.12.17-.46.55-.56.67-.1.12-.2.13-.38.04-.98-.4-1.63-.8-2.28-1.43-.5-.46-.98-1.09-1.3-1.63-.3-.47-.03-.73.08-.84.1-.12.22-.29.3-.44.08-.13.1-.25.15-.35.06-.1.03-.19-.01-.27-.04-.08-.38-.9-.52-1.22-.12-.27-.24-.22-.32-.22-.09 0-.2-.01-.3-.01-.19 0-.5.08-.76.38-.26.3-.98.96-.98 2.34s1.01 2.72 1.15 2.92c.14.2 1.96 3 4.79 4.22 2.06.9 2.66.72 3.12.67.43-.05.98-.4 1.12-.76.14-.37.14-.68.1-.76-.04-.08-.15-.13-.32-.22z"/></svg>');
-    background-size: contain;
-    background-repeat: no-repeat;
+.whatsapp-float:hover { transform: translateY(-3px); background: #20ba5a; color: #fff; }
+.whatsapp-float::before {
+  content: " "; display: inline-block; width: 18px; height: 18px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.46 0-9.92 4.46-9.92 9.92 0 1.75.54 3.42 1.48 4.86l-1.57 5.75 5.92-1.55c1.37.76 2.92 1.18 4.09 1.18 5.46 0 9.92-4.46 9.92-9.92s-4.46-9.92-9.92-9.92zm0 18c-1.39 0-2.82-.41-4.04-1.07l-.29-.17-3.03.79.8-2.94-.19-.3c-.93-1.46-1.43-3.14-1.43-4.88 0-4.43 3.61-8.04 8.04-8.04s8.04 3.61 8.04 8.04-3.61 8.04-8.04 8.04zm4.45-5.32c-.17-.08-.98-.49-1.14-.55s-.27-.08-.38.08c-.12.17-.46.55-.56.67-.1.12-.2.13-.38.04-.98-.4-1.63-.8-2.28-1.43-.5-.46-.98-1.09-1.3-1.63-.3-.47-.03-.73.08-.84.1-.12.22-.29.3-.44.08-.13.1-.25.15-.35.06-.1.03-.19-.01-.27-.04-.08-.38-.9-.52-1.22-.12-.27-.24-.22-.32-.22-.09 0-.2-.01-.3-.01-.19 0-.5.08-.76.38-.26.3-.98.96-.98 2.34s1.01 2.72 1.15 2.92c.14.2 1.96 3 4.79 4.22 2.06.9 2.66.72 3.12.67.43-.05.98-.4 1.12-.76.14-.37.14-.68.1-.76-.04-.08-.15-.13-.32-.22z"/></svg>');
+  background-size: contain; background-repeat: no-repeat;
 }
 
-
-/* Similar Properties Grid */
+/* Similar Properties */
 .similar-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 1.4rem;
-  margin-top: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem; margin-top: 1.8rem;
 }
+.similar-grid .property-card {
+  background: var(--card-bg); padding: 1rem; border-radius: 14px;
+  box-shadow: var(--shadow-light); text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+}
+.similar-grid .property-card img { width: 100%; height: 155px; object-fit: cover; border-radius: 10px; }
+.similar-grid .property-card h3  { color: var(--primary-color); font-size: 1.1rem; margin: .4rem 0 .1rem; }
+.similar-grid .property-card p   { font-size: 1.05rem; font-weight: 700; color: var(--secondary-color); }
+.similar-grid .property-card .btn { color: #fff; }
 
-.similar-grid .property-card { /* Target cards in similar grid specifically */
-   background: var(--card-bg);
-  padding: 1rem;
-  border-radius: 14px;
-  box-shadow: var(--shadow-light);
-  text-align: center; /* Center content in similar property cards */
-  display: flex; /* Flexbox for content alignment */
-  flex-direction: column;
-  align-items: center;
-  gap: .5rem;
-}
-
-.similar-grid .property-card img {
-  width: 100%;
-  height: 150px; /* Fixed height for consistency */
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.similar-grid .property-card h3 {
-  margin: .6rem 0 .2rem;
-  color: var(--primary-color);
-  font-size: 1.1rem;
-}
-.similar-grid .property-card p {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--secondary-color);
-    margin-bottom: .8rem;
-}
-.similar-grid .property-card .btn {
-    width: fit-content; /* Make button fit content */
-}
-
-/* Responsive adjustments for learn-more page */
+/* Responsive — learn more */
 @media (max-width: 768px) {
-    .property-hero h1 { font-size: 2rem; }
-    .property-hero .price { font-size: 1.3rem; }
-    .gallery-grid {
-        justify-content: flex-start; /* Allow scroll on smaller screens */
-    }
-    .hero-actions {
-        flex-direction: column;
-        align-items: center;
-    }
-    .hero-actions .btn {
-        width: 80%; /* Make buttons wider */
-    }
+  .property-hero h1      { font-size: 2rem; }
+  .property-hero .price  { font-size: 1.4rem; }
+  .gallery-grid          { justify-content: flex-start; }
+  .hero-actions          { flex-direction: column; align-items: center; }
+  .hero-actions .btn     { width: 80%; text-align: center; }
 }
 @media (max-width: 480px) {
-    .property-hero h1 { font-size: 1.8rem; }
-    .gallery-grid img, .gallery-grid video {
-        width: 150px;
-        height: 100px;
-    }
-    .lightbox .close {
-        top: 15px;
-        right: 15px;
-        font-size: 1.5rem;
-    }
+  .property-hero h1      { font-size: 1.8rem; }
+  .gallery-grid img,
+  .gallery-grid video    { width: 150px; height: 105px; }
+  .close-lightbox        { top: 14px; right: 16px; font-size: 1.8rem; }
 }

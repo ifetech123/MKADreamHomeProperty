@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apex Gardens Estate | MKA Dream Home Property</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="learn-more.css">
+</head>
+
+<body class="theme-blue"> <!-- Initial theme, will be overridden by JS if stored -->
+
+<header>
+   <div class="container">
+     <h1 class="logo">MKA<span> Dream Home </span></h1>
+     <a href="index.html" class="btn btn-primary" style="color: white;">← Back to Listings</a>
+   </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="property-hero" >
+  <div class="container">
+    <h1>Apex Gardens Estate</h1>
+    <p class="location">📍 Apa Aledo, Ososa, Ijebu-Ode, Ogun State</p>
+    <span class="price" style="color: white">₦25,000,000</span>
+
+    <div class="hero-actions">
+      <a href="tel:+2348054696078" class="btn" style="color: white;">Call Now</a>
+      <a href="https://wa.me/2348054696078" class="btn btn-primary" style="color: white;">WhatsApp</a>
+    </div>
+    <span class="status-badge available">available</span> <!-- Assuming it's sold for this page -->
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="container">
+    <h2>Estate Gallery</h2>
+    <div class="gallery-grid">
+      <img src="profile2.JPG" alt="Apex Gardens Image 1">
+      <img src="profile3.JPG" alt="Apex Gardens Image 2">
+      <video controls preload="none" poster="profile4.JPG-poster.jpg"> <!-- Added poster attribute -->
+        <source src="profile4.MP4" type="video/mp4">
+        <!-- Your browser does not support the video tag. -->
+      </video>
+       <img src="profile5.JPG" alt="Apex Gardens Image 3">
+       <img src="profile6.JPG" alt="Apex Gardens Image 4">
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox structure - moved to be a global element -->
+<div class="lightbox" id="lightbox">
+  <span class="close-lightbox">&times;</span>
+  <img id="lightbox-img" />
+  <video id="lightbox-video" controls style="display: none;"></video>
+</div>
+
+
+<!-- DETAILS -->
+<section class="light-bg">
+  <div class="container">
+    <h2>Property Details</h2>
+
+    <div class="details-grid">
+      <div class="detail-card">📐 Plot Size: 600sqm <br> 📐 Plot Size:300sqm</div>
+      <div class="detail-card">📜 Title: Registered Survey</div>
+      <div class="detail-card"><a class="pay" href="https://wa.me/2348054696078">💳 Payment Plan Available</a></div>
+      <div class="detail-card">🚧 Good Road Network</div>
+      <div class="detail-card">⚡ Electricity Available</div>
+      <div class="detail-card">💧 Drainage System</div>
+    </div>
+  </div>
+</section>
+
+<!-- Payment Plan Modal Trigger -->
+<section class="text-center">
+    <button class="btn btn-primary" id="openModal">View Payment Plan</button>
+</section>
+
+
+<!-- Payment Modal -->
+<div class="modal" id="paymentModal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Payment Plan</h2>
+    <ul>
+      <li>Outright: ₦25,000,000</li>
+      <li>6 Months: ₦27,000,000</li>
+      <li>12 Months: ₦30,000,000</li>
+    </ul>
+  </div>
+</div>
+
+<!-- WHY BUY -->
+<section>
+  <div class="container">
+    <h2>Why Invest in Apex Gardens?</h2>
+
+    <ul class="benefits">
+      <li>High appreciation area</li>
+      <li>Secure and serene environment</li>
+      <li>Perfect for residential & investment purposes</li>
+      <li>Fast developing location</li>
+    </ul>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <h2>Similar Properties</h2>
+
+    <div class="similar-grid">
+      <div class="property-card">
+        <img src="profile2.JPG" alt="Emerald View Estate">
+        <h3>Emerald View Estate</h3>
+        <p style="color: #7C3AED;">₦18,000,000</p>
+        <a href="#" class="btn btn-primary" style="color: white;">View</a>
+      </div>
+
+      <div class="property-card">
+        <img src="profile3.JPG" alt="Prime Haven">
+        <h3>Prime Haven</h3>
+        <p style="color: #7C3AED">₦22,000,000</p>
+        <a href="#" class="btn btn-primary" style="color: white;">View</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container text-center">
+    <h1 style="color: white;">Ready to Own a Plot?</h1>
+    <p>Book an inspection today and secure your future.</p>
+    <a href="tel:+2348054696078" class="btn btn-primary" style="color: white;">Call Now</a>
+  </div>
+</section>
+
+</main>
+
+
+<a href="https://wa.me/2348054696078" class="whatsapp-float" style="color: white;">
+  WhatsApp Us
+</a>
+
+<!-- Link to external JavaScript file -->
+<script src="app.js"></script>
+</body>
+</html>
