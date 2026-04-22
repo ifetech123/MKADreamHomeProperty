@@ -57,6 +57,7 @@ const properties = [
     status: "available",
     price: "₦80,000,000",
     location: "Victoria Island, Lagos",
+    
     shortDesc: "Strategically located for high commercial potential — ideal for shops, offices, or mixed-use.",
     fullDesc: "This prime commercial parcel sits in the heart of Victoria Island, Lagos's premier business district. Surrounded by banks, embassies and corporate headquarters, this land offers unmatched commercial visibility and footfall. Suitable for retail, office towers, hospitality or mixed-use development.",
     images: ["profile2.JPG", "profile.JPG", "profile3.JPG"],

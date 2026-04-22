@@ -13,16 +13,17 @@
 
   <!-- SEO — Open Graph -->
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://mkadreamhome.com/">
+  <meta property="og:url"         content="https://ifetech123.github.io/MKADreamHomeProperty/">
   <meta property="og:title"       content="MKA Dream Home Property — Buy Land & Property in Lagos">
   <meta property="og:description" content="Premium land and property listings across Lagos and Nigeria. Residential, commercial and agricultural plots.">
-  <meta property="og:image"       content="https://mkadreamhome.com/profile.JPG">
+  <meta property="og:image"       content="https://ifetech123.github.io/MKADreamHomeProperty/profile.JPG">
 
   <!-- SEO — Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="MKA Dream Home Property — Buy Land & Property in Lagos">
   <meta name="twitter:description" content="Premium land and property listings across Lagos and Nigeria.">
-  <meta name="twitter:image"       content="https://mkadreamhome.com/profile.JPG">
+  <!-- FIX: was pointing to wrong domain -->
+  <meta name="twitter:image"       content="https://ifetech123.github.io/MKADreamHomeProperty/profile.JPG">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
@@ -39,37 +40,25 @@
 
   <!-- ============================================================
     PAGE LOADER
-    Must be the FIRST element inside <body> so it renders
-    before anything else. JS removes the 'active' class once
-    all page assets have fully loaded.
+    First element in body — renders before anything else.
+    JS adds 'hidden' class once all assets are fully loaded.
   ============================================================ -->
   <div id="page-loader">
-    <!-- Thin progress bar sweeping across top -->
     <div class="loader-progress"></div>
-
     <div class="loader-content">
-      <!-- Each letter animates in separately with stagger delay -->
       <div class="loader-letters">
         <span class="loader-letter">M</span>
         <span class="loader-letter">K</span>
         <span class="loader-letter">A</span>
       </div>
-
-      <!-- Thin line slides in under the letters -->
       <div class="loader-divider"></div>
-
-      <!-- Subtitle fades up -->
       <p class="loader-tagline">Dream Home Property</p>
-
-      <!-- Three pulsing dots -->
       <div class="loader-dots">
         <div class="loader-dot"></div>
         <div class="loader-dot"></div>
         <div class="loader-dot"></div>
       </div>
     </div>
-
-    <!-- Fixed bottom text -->
     <p class="loader-bottom">Lagos, Nigeria</p>
   </div>
 
@@ -79,7 +68,7 @@
   <header>
     <div class="container">
 
-      <h1 class="logo">WELCOME TO MKA<span><br> DREAM HOME PROPERTY</span></h1>
+      <h1 class="logo">WELCOME TO MKA <span>DREAM HOME PROPERTY</span></h1>
 
       <nav id="main-nav" aria-label="Primary navigation">
         <ul>
@@ -89,7 +78,7 @@
           <li><a href="#testimonials">Reviews</a></li>
           <li><a href="#contact">Contact</a></li>
 
-          <!-- Mobile only: theme + dark mode -->
+          <!-- Mobile only: theme + dark mode — CSS hides on desktop -->
           <li class="nav-extras">
             <span class="nav-extras-label">Choose Theme</span>
             <div class="nav-theme-switcher">
@@ -102,6 +91,7 @@
         </ul>
       </nav>
 
+      <!-- Desktop: theme pills + dark toggle + hamburger -->
       <div class="header-extras">
         <div class="theme-switcher" title="Switch theme">
           <div class="theme-pill blue"  data-theme="theme-blue"  aria-label="Modern Blue"></div>
@@ -119,7 +109,9 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- ============================================================
+      HERO
+    ============================================================ -->
     <section id="hero" class="fadeInUp">
       <div class="container text-center">
         <h1>Find Your Perfect Plot of Land</h1>
@@ -128,7 +120,9 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ============================================================
+      ABOUT
+    ============================================================ -->
     <section id="about" class="fadeInUp">
       <div class="container text-center">
         <h2>About MKA Dream Home Property</h2>
@@ -137,34 +131,23 @@
       </div>
     </section>
 
-    <!-- PROPERTIES -->
+    <!-- ============================================================
+      PROPERTIES
+    ============================================================ -->
     <section id="properties" class="fadeInUp">
       <div class="container text-center">
         <h2>Our Exclusive Land Listings</h2>
         <p class="muted">Discover a range of prime plots available for immediate purchase. Click a listing to learn more.</p>
 
-        <!--
-          FILTER BAR
-          Each button has data-filter matching the card's data-type.
-          JS reads these values to show/hide cards.
-          'active' class highlights the selected filter.
-        -->
+        <!-- Filter Bar -->
         <div class="filter-bar mt-1">
-          <button class="filter-btn active" data-filter="all">
-            All Properties
-          </button>
-          <button class="filter-btn" data-filter="residential">
-            🏠 Residential
-          </button>
-          <button class="filter-btn" data-filter="commercial">
-            🏢 Commercial
-          </button>
-          <button class="filter-btn" data-filter="agricultural">
-            🌾 Agricultural
-          </button>
+          <button class="filter-btn active" data-filter="all">All Properties</button>
+          <button class="filter-btn" data-filter="residential">🏠 Residential</button>
+          <button class="filter-btn" data-filter="commercial">🏢 Commercial</button>
+          <button class="filter-btn" data-filter="agricultural">🌾 Agricultural</button>
         </div>
 
-        <!-- Filter result count — JS updates this -->
+        <!-- Filter result count — JS updates this text -->
         <p class="filter-count" id="filterCount"></p>
 
         <div class="property-grid mt-1" id="propertyGrid">
@@ -211,7 +194,7 @@
               <p class="location">📍 Ibadan, Oyo State</p>
               <span class="price">₦15,000,000</span>
               <div class="card-actions">
-                <a href="learn-more.html" class="btn btn-secondary">Learn More</a>
+                <a href="property.html?id=3" class="btn btn-secondary">Learn More</a>
                 <a href="https://wa.me/2348054696078?text=Hi%2C%20I%27m%20interested%20in%20the%20Spacious%20Agricultural%20Land%20in%20Ibadan.%20Please%20share%20more%20details." class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
               </div>
             </div>
@@ -230,7 +213,7 @@
               <p class="location">📍 Egan, Igando, Lagos</p>
               <span class="price">₦30,000,000</span>
               <div class="card-actions">
-                <a href="learn-more.html" class="btn btn-secondary">Learn More</a>
+                <a href="property.html?id=4" class="btn btn-secondary">Learn More</a>
                 <a href="https://wa.me/2348054696078?text=Hi%2C%20I%27m%20interested%20in%20the%20Suburban%20Residential%20Plot%20at%20Egan%20Igando.%20Please%20share%20more%20details." class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
               </div>
             </div>
@@ -246,7 +229,7 @@
               <p class="location">📍 Ibadan, Oyo State</p>
               <span class="price">₦15,000,000</span>
               <div class="card-actions">
-                <a href="learn-more.html" class="btn btn-secondary">Learn More</a>
+                <a href="property.html?id=5" class="btn btn-secondary">Learn More</a>
                 <a href="https://wa.me/2348054696078?text=Hi%2C%20I%27m%20interested%20in%20the%20Fertile%20Agricultural%20Land%20in%20Ibadan.%20Please%20share%20more%20details." class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
               </div>
             </div>
@@ -262,7 +245,7 @@
               <p class="location">📍 Ibadan, Oyo State</p>
               <span class="price">₦4,500,000</span>
               <div class="card-actions">
-                <a href="learn-more.html" class="btn btn-secondary">Learn More</a>
+                <a href="property.html?id=6" class="btn btn-secondary">Learn More</a>
                 <a href="https://wa.me/2348054696078?text=Hi%2C%20I%27m%20interested%20in%20Oceans%20Breeze%20Estate.%20Please%20share%20more%20details." class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
               </div>
             </div>
@@ -272,7 +255,9 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- ============================================================
+      TESTIMONIALS
+    ============================================================ -->
     <section id="testimonials" class="fadeInUp">
       <div class="container text-center">
         <h2>What Our Clients Say</h2>
@@ -320,7 +305,11 @@
       </div>
     </section>
 
-    <!-- CONTACT + GOOGLE MAPS -->
+    <!-- ============================================================
+      CONTACT + GOOGLE MAPS
+      No fixed office? "By Appointment Only" is professional
+      and used by many Lagos real estate agents.
+    ============================================================ -->
     <section id="contact" class="fadeInUp">
       <div class="container text-center">
         <h2>Get In Touch With Us</h2>
@@ -330,13 +319,15 @@
             <p>Have a question or ready to secure your next investment? We're just a message away. Whether you're buying, investing, or simply exploring your options, our team is here to guide you.</p>
             <p>Reach out today — let's find the perfect property for your future.</p>
             <p><strong>Phone:</strong> <a href="tel:+2348054696078">+234 805 469 6078</a></p>
-            <p><strong>Email:</strong> <a href="mailto:mkadproperties2019@gmail.com">mkadproperties2019@gmail.com</a></p>
-            <p><strong>Office Address:</strong> Bogije, Ibeju Lekki, Lagos, Nigeria.</p>
-            <p><strong>Business Hours:</strong> Mon–Sat: 9am–6pm</p>
+            <p><strong>Email:</strong> <a href="mailto:ifeoluwakelvin123@gmail.com">ifeoluwakelvin123@gmail.com</a></p>
+            <p><strong>Location:</strong> Lagos, Nigeria</p>
+            <p><strong>Meetings:</strong> By Appointment Only — Mon–Sat: 9am–6pm</p>
+
+            <!-- Map shows Lagos generally — update query when office is confirmed -->
             <div class="map-wrapper">
               <iframe
-                title="MKA Dream Home Property Office Location"
-                src="https://maps.google.com/maps?q=Bogije+Ibeju+Lekki+Lagos+Nigeria&output=embed&z=15"
+                title="MKA Dream Home Property — Lagos, Nigeria"
+                src="https://maps.google.com/maps?q=Lagos+Nigeria&output=embed&z=11"
                 width="100%"
                 height="260"
                 style="border:0;"
@@ -351,11 +342,16 @@
             <form class="contact-form" id="contactForm">
               <label for="name">Your Name</label>
               <input type="text" id="name" name="name" placeholder="Full Name" required>
+
               <label for="email">Your Email</label>
               <input type="email" id="email" name="email" placeholder="Email address" required>
+
               <label for="message">Your Message</label>
               <textarea id="message" name="message" placeholder="Tell us what you're looking for..." required></textarea>
+
+              <!-- Honeypot — invisible to users, catches spam bots -->
               <input type="text" name="_honey" style="display:none">
+
               <button type="submit" class="btn">Send Message</button>
             </form>
           </div>
@@ -366,11 +362,15 @@
 
   </main>
 
+  <!-- ============================================================
+    FOOTER
+  ============================================================ -->
   <footer>
     <div class="container">
       <p>&copy; <span id="year"></span> MKA Dream Home Property. All Rights Reserved.</p>
-      <p class="footer-bottom">Built by <a href="https://ifetech123.github.io/kelvin-web-studio/" target="_blank">Kelvin Web Studio</a></p>
-        
+      <p class="footer-bottom">
+        Built by <a href="https://ifetech123.github.io/kelvin-web-studio/" target="_blank" rel="noopener">Kelvin Web Studio</a>
+      </p>
       <div class="footer-links">
         <ul>
           <li><a href="#about">About</a></li>
@@ -380,21 +380,38 @@
         </ul>
       </div>
       <div class="social-icons">
-        <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
-        <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png" alt="Twitter"></a>
-        <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new--v1.png" alt="Instagram"></a>
-        <a href="#" aria-label="LinkedIn"><img src="https://img.icons8.com/ios-filled/24/ffffff/linkedin.png" alt="LinkedIn"></a>
+        <!-- Replace # with real social URLs when available -->
+        <a href="#" aria-label="Facebook">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook">
+        </a>
+        <a href="#" aria-label="Twitter">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png" alt="Twitter">
+        </a>
+        <a href="#" aria-label="Instagram">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new--v1.png" alt="Instagram">
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/linkedin.png" alt="LinkedIn">
+        </a>
       </div>
-      
     </div>
   </footer>
 
+  <!-- Scroll to top button -->
   <button id="scrollTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
 
-  <a href="https://wa.me/2348054696078?text=Hi%2C%20I%27m%20interested%20in%20your%20property%20listings.%20Please%20share%20more%20details." class="whatsapp-float" target="_blank" rel="noopener">
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/2348054696078?text=Hi%2C%20I%27m%20interested%20in%20your%20property%20listings.%20Please%20share%20more%20details."
+     class="whatsapp-float" target="_blank" rel="noopener">
     WhatsApp Us
   </a>
 
+  <!--
+    IMPORTANT: properties.js MUST come before app.js
+    so the properties array exists when app.js runs
+  -->
+  <script src="properties.js"></script>
   <script src="app.js"></script>
+
 </body>
 </html>

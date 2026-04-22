@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!--
-    SEO meta tags are set dynamically by JS below
-    based on whichever property is being viewed
-  -->
-  <title>MKA Dream Home Property</title>
+  <!-- Dynamically updated by JS based on property loaded -->
+  <title>Property Details | MKA Dream Home Property</title>
   <meta name="description" content="View property details — MKA Dream Home Property">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MKA Dream Home Property">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Styles — same stylesheet as index.html -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
+  <link href="property.css" rel="stylesheet">
 </head>
 
 <body class="theme-blue">
 
-  <!-- Page Loader — same as index.html -->
+  <!-- Page Loader -->
   <div id="page-loader">
     <div class="loader-progress"></div>
     <div class="loader-content">
@@ -44,154 +39,229 @@
     <p class="loader-bottom">Lagos, Nigeria</p>
   </div>
 
-  <!-- ============================================================
-    HEADER — back button replaces the nav for detail pages
-  ============================================================ -->
+  <!-- Header -->
   <header>
     <div class="container">
       <a href="index.html" class="logo" style="text-decoration:none;">
         MKA <span>Dream Home</span>
       </a>
-
       <nav id="main-nav" aria-label="Primary navigation">
         <ul>
-          <li><a href="index.html">← Back to Listings</a></li>
+          <li><a href="index.html">← Listings</a></li>
           <li><a href="index.html#properties">All Properties</a></li>
-          <li><a href="index.html#contact">Contact Us</a></li>
-
-          <!-- Mobile: theme + dark mode -->
+          <li><a href="index.html#contact">Contact</a></li>
           <li class="nav-extras">
             <span class="nav-extras-label">Choose Theme</span>
             <div class="nav-theme-switcher">
-              <div class="theme-pill blue"  data-theme="theme-blue"  aria-label="Modern Blue"></div>
-              <div class="theme-pill gold"  data-theme="theme-gold"  aria-label="Royal Gold"></div>
-              <div class="theme-pill green" data-theme="theme-green" aria-label="Emerald Green"></div>
+              <div class="theme-pill blue"  data-theme="theme-blue"></div>
+              <div class="theme-pill gold"  data-theme="theme-gold"></div>
+              <div class="theme-pill green" data-theme="theme-green"></div>
             </div>
             <button class="nav-dark-btn" id="navDarkToggle">Dark Mode</button>
           </li>
         </ul>
       </nav>
-
       <div class="header-extras">
-        <div class="theme-switcher" title="Switch theme">
-          <div class="theme-pill blue"  data-theme="theme-blue"  aria-label="Modern Blue"></div>
-          <div class="theme-pill gold"  data-theme="theme-gold"  aria-label="Royal Gold"></div>
-          <div class="theme-pill green" data-theme="theme-green" aria-label="Emerald Green"></div>
+        <div class="theme-switcher">
+          <div class="theme-pill blue"  data-theme="theme-blue"></div>
+          <div class="theme-pill gold"  data-theme="theme-gold"></div>
+          <div class="theme-pill green" data-theme="theme-green"></div>
         </div>
-        <button id="darkModeToggle" class="dark-mode-toggle-btn" aria-label="Toggle dark mode">Dark Mode</button>
-        <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" role="button" tabindex="0">
+        <button id="darkModeToggle" class="dark-mode-toggle-btn">Dark Mode</button>
+        <div class="menu-toggle" id="mobile-menu" role="button" tabindex="0">
           <span></span><span></span><span></span>
         </div>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="property-main">
 
     <!--
-      All content below is EMPTY on load.
-      JS reads the ?id= from the URL, finds the property
-      in properties.js, then fills everything in.
-      If no valid id is found, an error message shows instead.
+      ============================================================
+      HERO — background image set dynamically by JS
+      using the property's first image as the hero background.
+
+      To change the hero background for a property:
+      → Go to properties.js → find the property → change images[0]
+      ============================================================
     -->
-
-    <!-- HERO — filled by JS -->
-    <section class="property-hero" id="detail-hero">
-      <div class="container">
-        <div id="detail-hero-content">
-          <!-- JS injects: title, location, price, status badge, action buttons -->
-        </div>
+    <section class="pd-hero" id="pd-hero">
+      <div class="pd-hero-overlay"></div>
+      <div class="container pd-hero-content">
+        <!-- JS fills this section -->
+        <div id="pd-hero-inner"></div>
       </div>
     </section>
 
-    <!-- GALLERY — filled by JS -->
-    <section>
+    <!--
+      ============================================================
+      BREADCRUMB — tells user where they are
+      ============================================================
+    -->
+    <div class="pd-breadcrumb">
       <div class="container">
-        <h2>Estate Gallery</h2>
-        <div class="gallery-grid" id="detail-gallery">
-          <!-- JS injects: images and video thumbnails -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Lightbox — for gallery click to expand -->
-    <div class="lightbox" id="lightbox">
-      <span class="close-lightbox">&times;</span>
-      <img id="lightbox-img" alt="Property image expanded" />
-      <video id="lightbox-video" controls style="display:none;"></video>
-    </div>
-
-    <!-- DETAILS GRID — filled by JS -->
-    <section class="light-bg">
-      <div class="container">
-        <h2>Property Details</h2>
-        <div class="details-grid" id="detail-features">
-          <!-- JS injects: feature cards -->
-        </div>
-      </div>
-    </section>
-
-    <!-- PAYMENT PLAN TRIGGER -->
-    <section class="text-center">
-      <button class="btn btn-primary" id="openModal">View Payment Plan</button>
-    </section>
-
-    <!-- PAYMENT MODAL — filled by JS -->
-    <div class="modal" id="paymentModal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>Payment Plan</h2>
-        <ul id="detail-payment-list">
-          <!-- JS injects: payment plan options -->
-        </ul>
+        <span><a href="index.html">Home</a></span>
+        <span class="pd-breadcrumb-sep">›</span>
+        <span><a href="index.html#properties">Properties</a></span>
+        <span class="pd-breadcrumb-sep">›</span>
+        <span id="pd-breadcrumb-title">Loading...</span>
       </div>
     </div>
 
-    <!-- FULL DESCRIPTION — filled by JS -->
-    <section>
-      <div class="container">
-        <h2>About This Property</h2>
-        <p id="detail-full-desc" style="max-width:780px; margin: 0 auto; font-size:1.05rem; line-height:1.85;"></p>
+    <!--
+      ============================================================
+      TWO COLUMN LAYOUT — gallery left, quick info right
+      ============================================================
+    -->
+    <section class="pd-body">
+      <div class="container pd-grid">
+
+        <!-- LEFT: Gallery + Description + Features + Benefits -->
+        <div class="pd-left">
+
+          <!--
+            GALLERY
+            Images come from properties.js → images array.
+            To change images: update the images[] array for that property.
+            Clicking any image opens the lightbox.
+          -->
+          <div class="pd-section">
+            <h2 class="pd-section-title">Gallery</h2>
+            <div class="pd-gallery" id="pd-gallery">
+              <!-- JS injects images + video here -->
+            </div>
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div class="pd-section">
+            <h2 class="pd-section-title">About This Property</h2>
+            <p class="pd-description" id="pd-description"></p>
+          </div>
+
+          <!-- FEATURES GRID -->
+          <div class="pd-section">
+            <h2 class="pd-section-title">Property Features</h2>
+            <div class="pd-features" id="pd-features">
+              <!-- JS injects feature cards -->
+            </div>
+          </div>
+
+          <!-- BENEFITS -->
+          <div class="pd-section">
+            <h2 class="pd-section-title">Why Invest Here?</h2>
+            <ul class="pd-benefits" id="pd-benefits">
+              <!-- JS injects benefit items -->
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Price card + Contact actions (sticky on desktop) -->
+        <div class="pd-right">
+          <div class="pd-sticky-card" id="pd-sticky-card">
+
+            <!-- Price + Status -->
+            <div class="pd-price-block">
+              <span class="pd-price" id="pd-price"></span>
+              <span class="pd-status" id="pd-status"></span>
+            </div>
+
+            <div class="pd-card-location" id="pd-card-location"></div>
+
+            <div class="pd-divider"></div>
+
+            <!-- Primary actions -->
+            <div class="pd-card-actions">
+              <a href="tel:+2348054696078" class="btn pd-btn-full">
+                📞 Call Now
+              </a>
+              <a href="#" class="btn btn-whatsapp pd-btn-full" id="pd-wa-card" target="_blank" rel="noopener">
+                WhatsApp Agent
+              </a>
+            </div>
+
+            <!-- Payment plan trigger -->
+            <button class="pd-plan-btn" id="openModal">
+              View Payment Plan →
+            </button>
+
+            <div class="pd-divider"></div>
+
+            <!-- Quick facts summary -->
+            <div class="pd-quick-facts" id="pd-quick-facts">
+              <!-- JS injects first 3 features as quick facts -->
+            </div>
+
+            <!-- Share this property -->
+            <div class="pd-share">
+              <p class="pd-share-label">Share this property</p>
+              <div class="pd-share-btns">
+                <button class="pd-share-btn" id="pd-share-wa" title="Share on WhatsApp">WhatsApp</button>
+                <button class="pd-share-btn" id="pd-share-copy" title="Copy link">Copy Link</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- BENEFITS — filled by JS -->
-    <section class="light-bg">
+    <!-- SIMILAR PROPERTIES -->
+    <section class="pd-section-full light-bg">
       <div class="container">
-        <h2>Why Invest Here?</h2>
-        <ul class="benefits" id="detail-benefits">
-          <!-- JS injects: benefit list items -->
-        </ul>
-      </div>
-    </section>
-
-    <!-- SIMILAR PROPERTIES — filled by JS -->
-    <section>
-      <div class="container">
-        <h2>Similar Properties</h2>
-        <div class="similar-grid" id="detail-similar">
-          <!-- JS injects: up to 2 cards of same type -->
+        <h2 class="pd-section-title">Similar Properties</h2>
+        <div class="similar-grid" id="pd-similar">
+          <!-- JS injects similar property cards -->
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta text-center">
-      <div class="container">
-        <h1>Ready to Own This Property?</h1>
-        <p>Book an inspection today and secure your future.</p>
-        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+    <!-- CTA BANNER -->
+    <section class="pd-cta">
+      <div class="container text-center">
+        <h2>Ready to Secure This Property?</h2>
+        <p>Speak with our team today. No pressure — just clear, honest guidance.</p>
+        <div class="pd-cta-btns">
           <a href="tel:+2348054696078" class="btn">📞 Call Now</a>
-          <a id="detail-wa-btn" href="#" class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="#" class="btn btn-whatsapp" id="pd-wa-cta" target="_blank" rel="noopener">WhatsApp Us</a>
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+    <button class="close-lightbox" aria-label="Close">&times;</button>
+    <img id="lightbox-img" alt="Property image"/>
+    <video id="lightbox-video" controls style="display:none;"></video>
+    <!-- Navigation arrows -->
+    <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+    <button class="lb-arrow lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal" id="paymentModal" role="dialog" aria-label="Payment plan">
+    <div class="modal-content">
+      <button class="close-modal" aria-label="Close">&times;</button>
+      <h2>Payment Plan</h2>
+      <p class="pd-modal-subtitle" id="pd-modal-subtitle"></p>
+      <ul id="pd-payment-list"></ul>
+      <a href="#" class="btn btn-whatsapp pd-btn-full pd-modal-wa" id="pd-modal-wa" target="_blank" rel="noopener">
+        Enquire on WhatsApp
+      </a>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> MKA Dream Home Property/Investments. All Rights Reserved.</p>
+      <p>&copy; <span id="year"></span> MKA Dream Home Property. All Rights Reserved.</p>
+      <p class="footer-bottom">
+        Built by <a href="https://ifetech123.github.io/kelvin-web-studio/" target="_blank" rel="noopener">Kelvin Web Studio</a>
+      </p>
       <div class="footer-links">
         <ul>
           <li><a href="index.html#about">About</a></li>
@@ -209,18 +279,10 @@
     </div>
   </footer>
 
-  <button id="scrollTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
+  <button id="scrollTopBtn" aria-label="Back to top">↑</button>
+  <a href="#" class="whatsapp-float" id="wa-float" target="_blank" rel="noopener">WhatsApp Us</a>
 
-  <a id="wa-float" href="#" class="whatsapp-float" target="_blank" rel="noopener">
-    WhatsApp Us
-  </a>
-
-  <!--
-    IMPORTANT: properties.js must come BEFORE app.js
-    so the properties array is available when app.js runs
-  -->
   <script src="properties.js"></script>
   <script src="app.js"></script>
-
 </body>
 </html>

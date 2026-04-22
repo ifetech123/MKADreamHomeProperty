@@ -1,0 +1,544 @@
+/* ============================================================
+   property.css — MKA Dream Home Property Detail Page
+   Loaded ONLY on property.html — keeps style.css clean.
+
+   HOW TO EDIT BACKGROUNDS:
+   - Hero background → controlled by JS via pd-hero background-image
+   - Section backgrounds → change 'light-bg' class or edit below
+   - Card background → var(--card-bg) from style.css themes
+   ============================================================ */
+
+
+/* ============================================================
+   HERO — full bleed with property image as background
+   JS sets the background-image dynamically using images[0]
+   from properties.js. To change: update images[0] for that property.
+   ============================================================ */
+.pd-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;     /* content sits at the bottom of hero */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* fallback colour while image loads */
+  background-color: var(--dark-color);
+}
+
+/* Dark gradient overlay — makes text readable over any image */
+.pd-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.35) 40%,
+    rgba(0,0,0,0.75) 100%
+  );
+  z-index: 0;
+}
+
+.pd-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 3rem;
+  padding-top: 7rem;         /* space for sticky header */
+  width: 100%;
+}
+
+/* Content injected by JS */
+#pd-hero-inner { color: #fff; }
+
+#pd-hero-inner .pd-hero-badge {
+  display: inline-block;
+  padding: .35rem .9rem;
+  border-radius: 20px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+#pd-hero-inner h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: #fff;
+  margin-bottom: .6rem;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.5);
+  max-width: 800px;
+}
+
+#pd-hero-inner .pd-hero-location {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: .4rem;
+}
+
+#pd-hero-inner .pd-hero-price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--secondary-color);
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  margin-top: .3rem;
+}
+
+#pd-hero-inner .pd-hero-status {
+  display: inline-block;
+  margin-top: .8rem;
+  padding: .35rem 1rem;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 700;
+  color: #fff;
+}
+.pd-hero-status.available { background: var(--secondary-color); }
+.pd-hero-status.sold      { background: var(--danger-color); }
+
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.pd-breadcrumb {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: .75rem 0;
+  font-size: .88rem;
+  color: var(--muted);
+}
+.pd-breadcrumb a           { color: var(--muted); transition: color .2s; }
+.pd-breadcrumb a:hover     { color: var(--primary-color); }
+.pd-breadcrumb-sep         { margin: 0 .5rem; opacity: .5; }
+#pd-breadcrumb-title       { color: var(--text-color); font-weight: 600; }
+
+
+/* ============================================================
+   TWO COLUMN BODY LAYOUT
+   Left (content) + Right (sticky price card)
+   Stacks on mobile
+   ============================================================ */
+.pd-body { padding: 3rem 0 4rem; background: var(--light-color); }
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* LEFT COLUMN */
+.pd-left { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.pd-section {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+}
+
+.pd-section-title {
+  font-size: 1.3rem;
+  color: var(--heading-color);
+  margin-bottom: 1.2rem;
+  padding-bottom: .7rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* Description */
+.pd-description {
+  color: var(--text-color);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Features grid */
+.pd-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.pd-feature-card {
+  background: var(--light-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  font-size: .98rem;
+  font-weight: 600;
+  color: var(--text-color);
+  transition: transform .2s, box-shadow .2s;
+}
+.pd-feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-light); }
+
+/* Benefits list */
+.pd-benefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  margin: 0;
+}
+.pd-benefits li {
+  padding: .75rem 0 .75rem 1.8rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+.pd-benefits li:last-child { border-bottom: none; }
+.pd-benefits li::before {
+  content: "✔";
+  position: absolute; left: 0;
+  color: var(--secondary-color);
+}
+
+
+/* ============================================================
+   RIGHT COLUMN — STICKY PRICE CARD
+   ============================================================ */
+.pd-right { position: relative; }
+
+.pd-sticky-card {
+  position: sticky;
+  top: calc(var(--header-height) + 1.5rem);
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* Price + status */
+.pd-price-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.pd-price {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--secondary-color);
+  font-family: 'Montserrat', sans-serif;
+}
+.pd-status {
+  padding: .3rem .8rem;
+  border-radius: 20px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #fff;
+}
+.pd-status.available { background: var(--secondary-color); }
+.pd-status.sold      { background: var(--danger-color); }
+
+.pd-card-location {
+  font-size: .95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.pd-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: .2rem 0;
+}
+
+/* Action buttons */
+.pd-card-actions { display: flex; flex-direction: column; gap: .7rem; }
+.pd-btn-full     { width: 100%; text-align: center; justify-content: center; }
+
+/* Payment plan trigger */
+.pd-plan-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: .95rem;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font-family: inherit;
+  transition: color .2s;
+}
+.pd-plan-btn:hover { color: var(--dark-color); }
+
+/* Quick facts — first 3 features in a compact list */
+.pd-quick-facts {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.pd-quick-fact {
+  font-size: .92rem;
+  color: var(--text-color);
+  font-weight: 600;
+  padding: .4rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.pd-quick-fact:last-child { border-bottom: none; }
+
+/* Share section */
+.pd-share-label { font-size: .82rem; color: var(--muted); margin: 0 0 .5rem; font-weight: 600; }
+.pd-share-btns  { display: flex; gap: .6rem; }
+.pd-share-btn {
+  flex: 1;
+  padding: .55rem .5rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  background: transparent;
+  color: var(--text-color);
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .2s;
+}
+.pd-share-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: rgba(26,115,232,0.05);
+}
+
+
+/* ============================================================
+   GALLERY — horizontal scroll with click to expand
+   ============================================================ */
+.pd-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: .8rem;
+}
+
+.pd-gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4/3;  /* consistent proportions regardless of image size */
+  background: var(--border-color);
+}
+
+/* First image is the "hero thumb" — takes up two columns */
+.pd-gallery-item:first-child {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
+}
+
+.pd-gallery-item img,
+.pd-gallery-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.pd-gallery-item:hover img,
+.pd-gallery-item:hover video { transform: scale(1.06); }
+
+/* Video play icon overlay */
+.pd-video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+  transition: background .2s;
+}
+.pd-video-overlay:hover { background: rgba(0,0,0,0.5); }
+.pd-play-icon {
+  width: 48px; height: 48px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+
+
+/* ============================================================
+   LIGHTBOX — upgraded with arrows + counter
+   ============================================================ */
+.lightbox {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 3000;
+  flex-direction: column;
+  gap: 1rem;
+}
+.lightbox img,
+.lightbox video {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* Close button */
+.close-lightbox {
+  position: absolute;
+  top: 1.2rem; right: 1.5rem;
+  font-size: 2rem; color: #fff;
+  background: none; border: none;
+  cursor: pointer; opacity: .7;
+  transition: opacity .2s, transform .2s;
+  z-index: 3001; line-height: 1;
+}
+.close-lightbox:hover { opacity: 1; transform: scale(1.15); }
+
+/* Arrow navigation */
+.lb-arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.12);
+  border: none; color: #fff;
+  font-size: 2rem; line-height: 1;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+  z-index: 3001;
+}
+.lb-arrow:hover { background: rgba(255,255,255,0.25); }
+.lb-prev { left: 1.2rem; }
+.lb-next { right: 1.2rem; }
+
+/* Counter "2 / 5" */
+.lb-counter {
+  position: absolute;
+  bottom: 1.2rem;
+  font-size: .88rem;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* ============================================================
+   PAYMENT MODAL
+   ============================================================ */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 2000;
+}
+.modal-content {
+  background: var(--card-bg);
+  padding: 2.2rem; border-radius: 16px;
+  max-width: 420px; width: 90%;
+  box-shadow: var(--shadow-medium);
+  color: var(--text-color); position: relative;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.modal-content h2 { color: var(--heading-color); font-size: 1.5rem; }
+
+.pd-modal-subtitle { color: var(--muted); font-size: .95rem; margin: 0; }
+
+.modal-content ul { list-style: none; margin: 0; }
+.modal-content li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+}
+.modal-content li:last-child { border-bottom: none; }
+.modal-content li span:first-child { color: var(--muted); }
+.modal-content li span:last-child  { font-weight: 700; color: var(--heading-color); }
+
+.pd-modal-wa { margin-top: .5rem; }
+
+.close-modal {
+  position: absolute; top: 1rem; right: 1.2rem;
+  background: none; border: none;
+  cursor: pointer; font-size: 1.6rem;
+  color: var(--muted); transition: color .2s;
+  font-family: inherit; line-height: 1;
+}
+.close-modal:hover { color: var(--primary-color); }
+
+
+/* ============================================================
+   SECTION HEADINGS (full width sections)
+   ============================================================ */
+.pd-section-full { padding: 3.5rem 0; }
+.pd-section-full .pd-section-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* ============================================================
+   CTA BANNER
+   ============================================================ */
+.pd-cta {
+  background: var(--dark-color);
+  color: #fff;
+  padding: 4rem 0;
+  text-align: center;
+}
+.pd-cta h2 { color: #fff; font-size: 2rem; margin-bottom: .6rem; }
+.pd-cta p  { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 1.5rem; }
+.pd-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.pd-cta-btns .btn { color: #fff; }
+
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+body.dark-mode .pd-section       { background: var(--card-bg); border-color: var(--border-color); }
+body.dark-mode .pd-feature-card  { background: #0d1117; border-color: var(--border-color); }
+body.dark-mode .pd-sticky-card   { background: var(--card-bg); border-color: var(--border-color); }
+body.dark-mode .pd-description   { color: var(--text-color); }
+body.dark-mode .pd-benefits li   { color: var(--text-color); border-color: var(--border-color); }
+body.dark-mode .modal-content    { background: var(--card-bg); }
+body.dark-mode .pd-breadcrumb    { background: var(--card-bg); border-color: var(--border-color); }
+body.dark-mode .pd-share-btn     { border-color: var(--border-color); color: var(--text-color); }
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .pd-grid { grid-template-columns: 1fr 300px; gap: 1.8rem; }
+}
+
+@media (max-width: 768px) {
+  /* Stack columns on mobile */
+  .pd-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sticky card loses sticky on mobile — shows below left col */
+  .pd-sticky-card { position: static; }
+
+  /* Move sticky card above content on mobile */
+  .pd-right { order: -1; }
+
+  .pd-hero { min-height: 55vh; }
+  #pd-hero-inner h1 { font-size: 1.6rem; }
+  #pd-hero-inner .pd-hero-price { font-size: 1.5rem; }
+
+  .pd-gallery { grid-template-columns: repeat(2, 1fr); }
+  .pd-gallery-item:first-child { grid-column: span 2; }
+
+  .lb-arrow { display: none; } /* arrows hidden on mobile — swipe instead */
+  .pd-cta h2 { font-size: 1.5rem; }
+  .pd-section { padding: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+  .pd-price { font-size: 1.4rem; }
+  .pd-gallery { grid-template-columns: 1fr 1fr; gap: .5rem; }
+}
