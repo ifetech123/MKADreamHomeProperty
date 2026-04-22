@@ -160,8 +160,8 @@ section    { padding: 4.5rem 0; }
 .btn:hover  { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.14); }
 .btn:active { transform: translateY(1px); }
 
-.btn.btn-secondary       { background-color: var(--secondary-color); color: #fff; }
-.btn.btn-secondary:hover { background-color: var(--primary-color); }
+.btn.btn-secondary       { background-color: var(--primary-color); color: #fff; }
+.btn.btn-secondary:hover { background-color: var(--secondary-color); }
 
 .btn.btn-transparent {
   background: transparent;
@@ -197,7 +197,8 @@ header .container {
   padding: 0 1.25rem;
 }
 
-.logo      { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 99.5rem; color: #fff; white-space: nowrap; }
+/* ✅ BUG FIX — was 99.5rem (typo), corrected to 1.5rem */
+.logo      { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: #fff; white-space: nowrap; }
 .logo span { color: var(--primary-color); margin-left: 4px; font-weight: 800; }
 
 
@@ -225,9 +226,9 @@ nav ul li a:hover {
 }
 
 /*
-  nav-extras — holds theme pills + dark mode toggle
-  INSIDE the mobile slide menu.
-  Hidden on desktop (header version is shown instead).
+  nav-extras: theme pills + dark mode button
+  Lives INSIDE the mobile slide menu.
+  Hidden on desktop — header version shows instead.
 */
 .nav-extras {
   display: none;
@@ -247,14 +248,12 @@ nav ul li a:hover {
   text-transform: uppercase;
 }
 
-/* Theme pills inside the nav */
 .nav-theme-switcher {
   display: flex;
   gap: .6rem;
   align-items: center;
 }
 
-/* Dark mode button inside the nav */
 .nav-dark-btn {
   width: 100%;
   text-align: center;
@@ -273,7 +272,7 @@ nav ul li a:hover {
 
 
 /* ============================================================
-   7. THEME SWITCHER (header — desktop)
+   7. THEME SWITCHER (header — desktop only)
    ============================================================ */
 .header-extras {
   display: flex;
@@ -303,7 +302,7 @@ nav ul li a:hover {
 
 
 /* ============================================================
-   8. DARK MODE TOGGLE (header — desktop)
+   8. DARK MODE TOGGLE (header — desktop only)
    ============================================================ */
 .dark-mode-toggle-btn {
   padding: .5rem .95rem;
@@ -417,7 +416,7 @@ nav ul li a:hover {
   transition: transform .28s ease, box-shadow .28s ease;
   display: flex; flex-direction: column;
 }
-/* FIX: was height:300% */
+/* FIX: was height:300% — now fixed pixel height */
 .property-card img,
 .property-card video {
   width: 100%;
@@ -486,7 +485,7 @@ nav ul li a:hover {
 /* ============================================================
    14. FOOTER
    ============================================================ */
-footer { background: var(--dark-color); color: #fff; padding: 2.2rem 0; font-size: 1rem; }
+footer { background: var(--dark-color); color: #fff; padding: 2.2rem 0; font-size: 1rem; margin-top: 20x; }
 footer .container { display: flex; gap: 1rem; flex-direction: column; align-items: center; }
 
 .footer-links ul  { display: flex; gap: 1.2rem; list-style: none; margin-bottom: .4rem; }
@@ -501,6 +500,15 @@ footer .container { display: flex; gap: 1rem; flex-direction: column; align-item
 }
 .social-icons a:hover img { transform: scale(1.22); }
 
+.footer-bottom{
+  margin-top: -20px;
+}
+.footer-bottom a{
+  color: white;
+}
+.footer-bottom a:hover{
+  color: var(--primary-color);
+}
 
 /* ============================================================
    15. ANIMATIONS
@@ -571,12 +579,10 @@ footer .container { display: flex; gap: 1rem; flex-direction: column; align-item
 }
 
 @media (min-width: 769px) {
-  /* Show header versions on desktop */
   .theme-switcher,
   .dark-mode-toggle-btn { display: flex; }
-  /* Hide nav version on desktop */
   .nav-extras           { display: none; }
-} 
+}
 
 
 /* ============================================================
@@ -673,7 +679,6 @@ footer .container { display: flex; gap: 1rem; flex-direction: column; align-item
 .lightbox img,
 .lightbox video { max-width: 92%; max-height: 88%; border-radius: 12px; object-fit: contain; }
 
-/* FIX: was .lightbox .close — selector never matched HTML class .close-lightbox */
 .close-lightbox {
   position: absolute; top: 22px; right: 32px;
   font-size: 2.4rem; color: #fff;
@@ -721,7 +726,7 @@ footer .container { display: flex; gap: 1rem; flex-direction: column; align-item
   background: #25d366; color: #fff;
   font-size: .95rem; font-weight: 600;
   padding: .7rem 1.2rem; border-radius: 30px;
-  display: flex; align-items: center; gap: .5rem;
+  display: flex; align-items: center; gap: .3rem;
   box-shadow: 0 6px 20px rgba(37,211,102,0.35);
   z-index: 1200;
   transition: transform .2s ease, background .2s ease;
@@ -762,4 +767,567 @@ footer .container { display: flex; gap: 1rem; flex-direction: column; align-item
   .gallery-grid img,
   .gallery-grid video    { width: 150px; height: 105px; }
   .close-lightbox        { top: 14px; right: 16px; font-size: 1.8rem; }
+}
+
+
+/* ============================================================
+   ADDITIONS — Step 1 Updates
+   Property badges, WhatsApp card button, Scroll-to-top
+   Append this to the bottom of your existing style.css
+============================================================ */
+
+/* ----------------------------------
+   Property Type Badges
+   Sits in top-left corner of each card image
+---------------------------------- */
+.property-card {
+  position: relative; /* needed so badge positions correctly */
+}
+
+.property-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  padding: .3rem .75rem;
+  border-radius: 20px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: #fff;
+  pointer-events: none; /* badge doesn't block clicks */
+}
+
+.badge-residential  { background: #1a73e8; }
+.badge-commercial   { background: #f59e0b; }
+.badge-agricultural { background: #10b981; }
+
+
+/* ----------------------------------
+   WhatsApp Card Button
+   Green branded button on each property card
+---------------------------------- */
+.btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+.btn-whatsapp::before {
+  content: " ";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.46 0-9.92 4.46-9.92 9.92 0 1.75.54 3.42 1.48 4.86l-1.57 5.75 5.92-1.55c1.37.76 2.92 1.18 4.09 1.18 5.46 0 9.92-4.46 9.92-9.92s-4.46-9.92-9.92-9.92zm0 18c-1.39 0-2.82-.41-4.04-1.07l-.29-.17-3.03.79.8-2.94-.19-.3c-.93-1.46-1.43-3.14-1.43-4.88 0-4.43 3.61-8.04 8.04-8.04s8.04 3.61 8.04 8.04-3.61 8.04-8.04 8.04z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+.btn-whatsapp:hover {
+  background: #20ba5a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+
+/* ----------------------------------
+   Scroll To Top Button
+   Fixed bottom-left, appears after scrolling 300px
+---------------------------------- */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s ease, background .2s ease;
+  z-index: 1200;
+}
+#scrollTopBtn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+#scrollTopBtn:hover {
+  background: var(--dark-color);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   ADDITIONS — Step 2
+   Testimonials section + Google Maps embed
+============================================================ */
+
+/* ----------------------------------
+   Testimonials Section
+---------------------------------- */
+#testimonials {
+  background: var(--light-color);
+}
+#testimonials h2  { font-size: 2.2rem; margin-bottom: .5rem; }
+#testimonials .muted { font-size: 1.05rem; }
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  margin-top: 1.8rem;
+  text-align: left;
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+  position: relative;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Opening quote decoration */
+.testimonial-card::before {
+  content: "\201C"; /* left double quote */
+  position: absolute;
+  top: 1rem;
+  right: 1.4rem;
+  font-size: 4rem;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary-color);
+  opacity: .15;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonial-stars {
+  color: #f59e0b; /* amber gold for stars */
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.testimonial-text {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.75;
+  font-style: italic;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin-top: .5rem;
+}
+
+/* Avatar circle — shows initials */
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.testimonial-author strong {
+  display: block;
+  color: var(--heading-color);
+  font-size: .98rem;
+}
+
+.testimonial-tag {
+  display: block;
+  font-size: .82rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-top: .15rem;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .testimonial-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+body.dark-mode .testimonial-text   { color: var(--text-color); }
+body.dark-mode .testimonial-author strong { color: var(--heading-color); }
+
+
+/* ----------------------------------
+   Google Maps Embed
+---------------------------------- */
+.map-wrapper {
+  margin-top: 1.4rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+.map-wrapper iframe {
+  display: block; /* removes bottom gap under iframe */
+  width: 100%;
+  height: 260px;
+  border: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .map-wrapper iframe { height: 200px; }
+}
+
+
+/* ============================================================
+   ADDITIONS — Step 3 (Redesigned)
+   Premium Page Loader
+============================================================ */
+
+/*
+  Full screen overlay — sits above everything via z-index: 9999
+  Dark background matches the brand header colour
+*/
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #080e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity .6s ease, visibility .6s ease;
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
+}
+
+#page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ----------------------------------------
+   Progress bar — sweeps across the top
+   like a premium loading indicator
+---------------------------------------- */
+.loader-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    #6ee7b7,
+    var(--primary-color)
+  );
+  animation: progressSweep 1.8s ease forwards;
+  box-shadow: 0 0 12px rgba(26,115,232,0.8);
+}
+
+@keyframes progressSweep {
+  0%   { width: 0%; }
+  60%  { width: 85%; }
+  100% { width: 100%; }
+}
+
+/* ----------------------------------------
+   Centre content wrapper
+---------------------------------------- */
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ----------------------------------------
+   MKA Letters — each drops in separately
+   animation-delay staggers them:
+   M = 0s, K = 0.15s, A = 0.30s
+---------------------------------------- */
+.loader-letters {
+  display: flex;
+  gap: .5rem;
+  align-items: flex-end;
+  position: relative;
+}
+
+.loader-letter {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(-40px);
+  animation: letterDrop .5s cubic-bezier(.22,1,.36,1) forwards;
+  position: relative;
+}
+
+/* Stagger each letter */
+.loader-letter:nth-child(1) { animation-delay: .1s;  color: var(--primary-color); }
+.loader-letter:nth-child(2) { animation-delay: .25s; color: #fff; }
+.loader-letter:nth-child(3) { animation-delay: .4s;  color: var(--primary-color); }
+
+@keyframes letterDrop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer sweep across the letters */
+.loader-letters::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSweep 1.8s ease .6s forwards;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0%   { opacity: 1; background-position: 200% center; }
+  100% { opacity: 0; background-position: -200% center; }
+}
+
+/* ----------------------------------------
+   Divider line — slides in under letters
+---------------------------------------- */
+.loader-divider {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: dividerGrow .5s ease .55s forwards;
+}
+
+@keyframes dividerGrow {
+  to { width: 200px; }
+}
+
+/* ----------------------------------------
+   Tagline — fades up after letters land
+---------------------------------------- */
+.loader-tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .82rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: taglineFade .5s ease .7s forwards;
+}
+
+@keyframes taglineFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------------------------------
+   Three animated dots — pulse in sequence
+---------------------------------------- */
+.loader-dots {
+  display: flex;
+  gap: .5rem;
+  margin-top: .5rem;
+  opacity: 0;
+  animation: taglineFade .4s ease .9s forwards;
+}
+
+.loader-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+
+.loader-dot:nth-child(1) { animation-delay: 0s; }
+.loader-dot:nth-child(2) { animation-delay: .2s; }
+.loader-dot:nth-child(3) { animation-delay: .4s; }
+
+@keyframes dotPulse {
+  0%, 100% { opacity: .3; transform: scale(.8); }
+  50%       { opacity: 1;  transform: scale(1.2); }
+}
+
+/* ----------------------------------------
+   Bottom tagline — fixed at bottom
+---------------------------------------- */
+.loader-bottom {
+  position: absolute;
+  bottom: 2rem;
+  font-size: .78rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 1px;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0;
+  animation: taglineFade .4s ease 1s forwards;
+}
+
+
+/* ============================================================
+   ADDITIONS — Step 4
+   Property Filter System
+============================================================ */
+
+/* ----------------------------------
+   Filter Bar — row of filter buttons
+---------------------------------- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.filter-btn {
+  padding: .55rem 1.2rem;
+  border-radius: 30px;         /* pill shape */
+  border: 1.5px solid var(--border-color);
+  background: transparent;
+  color: var(--text-color);
+  font-family: 'Open Sans', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .22s ease;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: rgba(26,115,232,0.06);
+}
+
+/* Active state — selected filter button */
+.filter-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(26,115,232,0.25);
+}
+
+/* ----------------------------------
+   Filter Result Count
+   "Showing 3 of 6 properties"
+---------------------------------- */
+.filter-count {
+  font-size: .92rem;
+  color: var(--muted);
+  margin-top: .6rem;
+  font-style: italic;
+  min-height: 1.4em; /* stops layout shift when text changes */
+}
+
+/* ----------------------------------
+   Card hide/show animation
+   Cards don't just disappear — they
+   fade and scale down smoothly
+---------------------------------- */
+.property-card {
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    opacity .3s ease,    /* smooth fade */
+    scale .3s ease;      /* smooth scale */
+}
+
+/* When filter hides a card */
+.property-card.filtered-out {
+  opacity: 0;
+  scale: .95;
+  pointer-events: none; /* can't click hidden cards */
+  position: absolute;   /* removes from layout flow */
+  visibility: hidden;
+}
+
+/*
+  Property grid needs relative positioning so
+  filtered-out cards (position:absolute) don't
+  cause page layout issues
+*/
+#propertyGrid {
+  position: relative;
+}
+
+/* ----------------------------------
+   No results message
+   Shows when no cards match the filter
+---------------------------------- */
+.no-results {
+  grid-column: 1 / -1; /* spans full grid width */
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.no-results span {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: .8rem;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .filter-btn {
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+body.dark-mode .filter-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+body.dark-mode .filter-btn.active {
+  color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .filter-btn { font-size: .88rem; padding: .5rem 1rem; }
 }

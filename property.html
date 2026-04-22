@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!--
+    SEO meta tags are set dynamically by JS below
+    based on whichever property is being viewed
+  -->
+  <title>MKA Dream Home Property</title>
+  <meta name="description" content="View property details — MKA Dream Home Property">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles — same stylesheet as index.html -->
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="theme-blue">
+
+  <!-- Page Loader — same as index.html -->
+  <div id="page-loader">
+    <div class="loader-progress"></div>
+    <div class="loader-content">
+      <div class="loader-letters">
+        <span class="loader-letter">M</span>
+        <span class="loader-letter">K</span>
+        <span class="loader-letter">A</span>
+      </div>
+      <div class="loader-divider"></div>
+      <p class="loader-tagline">Dream Home Property</p>
+      <div class="loader-dots">
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+      </div>
+    </div>
+    <p class="loader-bottom">Lagos, Nigeria</p>
+  </div>
+
+  <!-- ============================================================
+    HEADER — back button replaces the nav for detail pages
+  ============================================================ -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo" style="text-decoration:none;">
+        MKA <span>Dream Home</span>
+      </a>
+
+      <nav id="main-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">← Back to Listings</a></li>
+          <li><a href="index.html#properties">All Properties</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+
+          <!-- Mobile: theme + dark mode -->
+          <li class="nav-extras">
+            <span class="nav-extras-label">Choose Theme</span>
+            <div class="nav-theme-switcher">
+              <div class="theme-pill blue"  data-theme="theme-blue"  aria-label="Modern Blue"></div>
+              <div class="theme-pill gold"  data-theme="theme-gold"  aria-label="Royal Gold"></div>
+              <div class="theme-pill green" data-theme="theme-green" aria-label="Emerald Green"></div>
+            </div>
+            <button class="nav-dark-btn" id="navDarkToggle">Dark Mode</button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-extras">
+        <div class="theme-switcher" title="Switch theme">
+          <div class="theme-pill blue"  data-theme="theme-blue"  aria-label="Modern Blue"></div>
+          <div class="theme-pill gold"  data-theme="theme-gold"  aria-label="Royal Gold"></div>
+          <div class="theme-pill green" data-theme="theme-green" aria-label="Emerald Green"></div>
+        </div>
+        <button id="darkModeToggle" class="dark-mode-toggle-btn" aria-label="Toggle dark mode">Dark Mode</button>
+        <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!--
+      All content below is EMPTY on load.
+      JS reads the ?id= from the URL, finds the property
+      in properties.js, then fills everything in.
+      If no valid id is found, an error message shows instead.
+    -->
+
+    <!-- HERO — filled by JS -->
+    <section class="property-hero" id="detail-hero">
+      <div class="container">
+        <div id="detail-hero-content">
+          <!-- JS injects: title, location, price, status badge, action buttons -->
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY — filled by JS -->
+    <section>
+      <div class="container">
+        <h2>Estate Gallery</h2>
+        <div class="gallery-grid" id="detail-gallery">
+          <!-- JS injects: images and video thumbnails -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox — for gallery click to expand -->
+    <div class="lightbox" id="lightbox">
+      <span class="close-lightbox">&times;</span>
+      <img id="lightbox-img" alt="Property image expanded" />
+      <video id="lightbox-video" controls style="display:none;"></video>
+    </div>
+
+    <!-- DETAILS GRID — filled by JS -->
+    <section class="light-bg">
+      <div class="container">
+        <h2>Property Details</h2>
+        <div class="details-grid" id="detail-features">
+          <!-- JS injects: feature cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT PLAN TRIGGER -->
+    <section class="text-center">
+      <button class="btn btn-primary" id="openModal">View Payment Plan</button>
+    </section>
+
+    <!-- PAYMENT MODAL — filled by JS -->
+    <div class="modal" id="paymentModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Payment Plan</h2>
+        <ul id="detail-payment-list">
+          <!-- JS injects: payment plan options -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- FULL DESCRIPTION — filled by JS -->
+    <section>
+      <div class="container">
+        <h2>About This Property</h2>
+        <p id="detail-full-desc" style="max-width:780px; margin: 0 auto; font-size:1.05rem; line-height:1.85;"></p>
+      </div>
+    </section>
+
+    <!-- BENEFITS — filled by JS -->
+    <section class="light-bg">
+      <div class="container">
+        <h2>Why Invest Here?</h2>
+        <ul class="benefits" id="detail-benefits">
+          <!-- JS injects: benefit list items -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- SIMILAR PROPERTIES — filled by JS -->
+    <section>
+      <div class="container">
+        <h2>Similar Properties</h2>
+        <div class="similar-grid" id="detail-similar">
+          <!-- JS injects: up to 2 cards of same type -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta text-center">
+      <div class="container">
+        <h1>Ready to Own This Property?</h1>
+        <p>Book an inspection today and secure your future.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="tel:+2348054696078" class="btn">📞 Call Now</a>
+          <a id="detail-wa-btn" href="#" class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> MKA Dream Home Property/Investments. All Rights Reserved.</p>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#properties">Listings</a></li>
+          <li><a href="index.html#testimonials">Reviews</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+        <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png" alt="Twitter"></a>
+        <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new--v1.png" alt="Instagram"></a>
+        <a href="#" aria-label="LinkedIn"><img src="https://img.icons8.com/ios-filled/24/ffffff/linkedin.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scrollTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
+
+  <a id="wa-float" href="#" class="whatsapp-float" target="_blank" rel="noopener">
+    WhatsApp Us
+  </a>
+
+  <!--
+    IMPORTANT: properties.js must come BEFORE app.js
+    so the properties array is available when app.js runs
+  -->
+  <script src="properties.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
